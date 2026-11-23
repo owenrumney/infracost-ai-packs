@@ -1,0 +1,12 @@
+# What this repository offers. The CLI reads this file and nothing else to
+# know what is here.
+index: 1
+name: Owen's packs
+description: >
+  Packs for Infracost AI. Each one is data: YAML and Markdown naming library
+  blocks that live in the CLI. No executable code.
+
+packs:
+  - id: owenrumney/tests
+    path: packs/tests
+    description: Run the tests before you commit

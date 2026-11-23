@@ -1,0 +1,25 @@
+name: Test before you commit
+summary: Run the tests before the commit, not after the push.
+
+report:
+  seen: >
+    {cases} of {applicable} commits had a test run in the turns before them.
+  not_seen: >
+    {count} commits were made with no test run in the turns before them.
+  continuous: >
+    A pre-commit hook runs the tests, so a commit cannot get ahead of them.
+
+next_step: >
+  Add a pre-commit hook that runs the test command for this repository.
+
+advice: >
+  An agent that has just made a change is confident it works. Running the
+  tests is the cheapest way to find out, and the turn to do it in is the one
+  before the commit, while the change is still small enough to read.
+
+interrupt: >
+  This commits without having run the tests.
+
+fix_prompt: >
+  Add a pre-commit hook that runs this repository's test command and refuses
+  the commit when it fails.

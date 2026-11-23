@@ -1,0 +1,14 @@
+id: owenrumney/tests
+name: Tests
+version: 0.1.0
+channel: stable
+
+description: >
+  One pattern, for repositories that have tests. Committing without running
+  them is the cheapest mistake to catch, and the easiest one to make when an
+  agent is driving.
+
+maintainers:
+  - owenrumney/packs
+
+section: Tests

@@ -1,0 +1,6 @@
+outcomes:
+  - id: reverted_within_1d
+    measure: reverted_within
+    params:
+      days: 1
+    groups: [tests]

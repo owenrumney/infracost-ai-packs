@@ -1,0 +1,7 @@
+groups:
+  - id: tests
+    name: Tests
+    description: >
+      Checks that run before a change is committed.
+    patterns:
+      - test-before-commit

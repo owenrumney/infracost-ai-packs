@@ -1,0 +1,47 @@
+id: owenrumney/test-before-commit
+version: 1
+status: stable
+group: tests
+rung: 3
+
+# Only in a repository that has tests to run. Nothing to say about one that
+# does not.
+applies_to:
+  block: repo_file_matches
+  glob: '**/*_test.go'
+  present: true
+
+detection:
+  code:
+    - block: tool_call_sequence
+      id: commit-without-test
+      earlier:
+        tool: Bash
+        command_matches: '^go test'
+      later:
+        tool: Bash
+        command_matches: '^git commit'
+      within_turns: 10
+      fires_when: earlier_missing
+
+seen:
+  when: the tests ran in the turns before the commit
+
+continuous:
+  mechanisms:
+    - block: hook_configured
+      event: PreToolUse
+      kind: test
+  held:
+    applies_when: a commit is about to be made in a repository that has tests
+    holds_when: the tests ran first
+    not_holding_when: the commit was made with no test run before it
+
+automate: >
+  Run the test command on a pre-commit hook, so the answer arrives before the
+  commit rather than after the push.
+
+outcomes: [reverted_within_1d]
+requires: []
+opportunities: true
+enabled: true
